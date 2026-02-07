@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    /* Warm sand / cream background */
+    --background: 30 25% 96%;
+    --foreground: 220 20% 14%;
+    --card: 30 20% 98%;
+    --card-foreground: 220 20% 14%;
+    --popover: 30 20% 98%;
+    --popover-foreground: 220 20% 14%;
+    /* Deep ocean teal - primary */
+    --primary: 195 50% 28%;
+    --primary-foreground: 30 25% 96%;
+    /* Warm sand - secondary */
+    --secondary: 32 30% 90%;
+    --secondary-foreground: 220 20% 14%;
+    --muted: 30 15% 92%;
+    --muted-foreground: 220 10% 46%;
+    /* Warm gold - accent */
+    --accent: 38 60% 50%;
+    --accent-foreground: 220 20% 14%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 30 15% 85%;
+    --input: 30 15% 85%;
+    --ring: 195 50% 28%;
+    --radius: 0.25rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(30, 25%, 96%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(195, 50%, 28%);
+  border-radius: 3px;
+}
+
+/* Animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.8s ease-out forwards;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+.animation-delay-800 {
+  animation-delay: 800ms;
+}
+
+/* Ornate gold gradient text for hero brand title */
+.text-gold-gradient {
+  background: linear-gradient(
+    135deg,
+    hsl(38, 55%, 65%) 0%,
+    hsl(42, 70%, 78%) 30%,
+    hsl(35, 60%, 58%) 50%,
+    hsl(42, 70%, 78%) 70%,
+    hsl(38, 55%, 65%) 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gold-shimmer 6s ease-in-out infinite;
+}
+
+@keyframes gold-shimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.text-glow-gold {
+  filter: drop-shadow(0 0 20px hsl(38, 60%, 50%, 0.25))
+    drop-shadow(0 0 60px hsl(38, 60%, 50%, 0.1));
+}
+
+/* YouTube background video -- ensure the injected iframe fills its container */
+[class*="pointer-events-none"] iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  pointer-events: none;
+}
+
+/* Gentle pulse for CTA buttons */
+@keyframes gentle-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 hsl(38, 60%, 50%, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px 4px hsl(38, 60%, 50%, 0.12);
+  }
+}
+
+.animate-gentle-pulse {
+  animation: gentle-pulse 3s ease-in-out infinite;
+}
+
+/* Shimmer sweep for CTA buttons */
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-15deg);
+  }
+}
+
+.shimmer-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    hsl(38, 60%, 50%, 0.12) 45%,
+    hsl(38, 60%, 50%, 0.2) 50%,
+    hsl(38, 60%, 50%, 0.12) 55%,
+    transparent 100%
+  );
+  animation: shimmer-sweep 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Audio toggle breathing ring */
+@keyframes audio-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0;
+  }
+}
